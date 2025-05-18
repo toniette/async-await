@@ -2,6 +2,7 @@
 
 namespace Toniette\AsyncAwait\Async;
 
+use Throwable;
 use Toniette\AsyncAwait\Async\Exception\PromiseException;
 
 /**
@@ -64,7 +65,7 @@ class Promise implements PromiseInterface
      */
     public function await(): mixed
     {
-        // If socket is null, it means the promise has already been awaited or was created with a null socket
+        // If the socket is null, it means the promise has already been awaited or was created with a null socket
         if ($this->socket === null) {
             return null;
         }
@@ -84,12 +85,12 @@ class Promise implements PromiseInterface
             $this->socket = null;
 
             // Only wait for real processes (skip for mock PIDs in tests)
-            // In a real scenario, PIDs are usually much smaller than 10000
+            // In a real scenario, PIDs are usually much smaller than 10,000
             if ($this->pid < 10000) {
                 $waitResult = pcntl_waitpid($this->pid, $this->status);
 
                 if ($waitResult === -1) {
-                    throw new PromiseException("Failed to wait for child process (PID: {$this->pid})");
+                    throw new PromiseException("Failed to wait for child process (PID: $this->pid)");
                 }
 
                 // Check if the process exited normally
@@ -103,7 +104,7 @@ class Promise implements PromiseInterface
         } catch (PromiseException $e) {
             // Re-throw PromiseException
             throw $e;
-        } catch (\Throwable $e) {
+        } catch (Throwable $e) {
             // Wrap other exceptions in PromiseException
             throw new PromiseException("Error awaiting promise: " . $e->getMessage(), 0, $e);
         }

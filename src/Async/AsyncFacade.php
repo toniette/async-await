@@ -2,13 +2,17 @@
 
 namespace Toniette\AsyncAwait\Async;
 
+use Toniette\AsyncAwait\Async\Exception\ProcessException;
+use Toniette\AsyncAwait\Async\Exception\PromiseException;
+use Toniette\AsyncAwait\Async\Exception\SocketException;
+
 /**
  * Facade providing a simpler API for async operations
  */
 class AsyncFacade
 {
     /**
-     * @var AsyncManager The singleton instance of AsyncManager
+     * @var null|AsyncManager The singleton instance of AsyncManager
      */
     private static ?AsyncManager $instance = null;
 
@@ -32,6 +36,8 @@ class AsyncFacade
      * @param callable $fn The function to execute asynchronously
      * @param mixed ...$params Parameters to pass to the function
      * @return PromiseInterface A Promise object representing the asynchronous operation
+     * @throws ProcessException
+     * @throws SocketException
      */
     public static function async(callable $fn, mixed ...$params): PromiseInterface
     {
@@ -43,6 +49,7 @@ class AsyncFacade
      *
      * @param PromiseInterface $promise The promise to wait for
      * @return mixed The result of the asynchronous operation
+     * @throws PromiseException
      */
     public static function await(PromiseInterface $promise): mixed
     {

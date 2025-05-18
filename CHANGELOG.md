@@ -10,9 +10,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 - Initial release of the AsyncAwait PHP Library
 - Promise-based API for asynchronous operations
-- Support for async/await pattern
+- Support for an async/await pattern
 - Support for pooling multiple promises
-- Backward compatibility with functional API
+- Backward compatibility with a functional API
 - Comprehensive test suite
 - GitHub Actions workflow for automated testing
 - Documentation and examples

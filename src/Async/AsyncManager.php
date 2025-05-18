@@ -2,8 +2,8 @@
 
 namespace Toniette\AsyncAwait\Async;
 
-use Toniette\AsyncAwait\Async\Exception\AsyncException;
 use Toniette\AsyncAwait\Async\Exception\ProcessException;
+use Toniette\AsyncAwait\Async\Exception\PromiseException;
 use Toniette\AsyncAwait\Async\Exception\SocketException;
 
 /**
@@ -17,8 +17,8 @@ class AsyncManager
      * @param callable $fn The function to execute asynchronously
      * @param mixed ...$params Parameters to pass to the function
      * @return PromiseInterface A Promise object representing the asynchronous operation
-     * @throws SocketException If there's an error setting up sockets
-     * @throws ProcessException If there's an error forking the process
+     * @throws SocketException If there's an error, setting up sockets
+     * @throws ProcessException If there's an error, forking the process
      */
     public function async(callable $fn, mixed ...$params): PromiseInterface
     {
@@ -38,6 +38,7 @@ class AsyncManager
      *
      * @param PromiseInterface $promise The promise to wait for
      * @return mixed The result of the asynchronous operation
+     * @throws PromiseException
      */
     public function await(PromiseInterface $promise): mixed
     {
@@ -123,7 +124,7 @@ class AsyncManager
      * @param array $params The parameters to pass to the function
      * @param array $sockets The socket pair for communication
      * @return int The process ID of the child process
-     * @throws ProcessException If there's an error forking the process
+     * @throws ProcessException If there's an error, forking the process
      */
     private function forkProcess(callable $fn, array $params, array $sockets): int
     {
@@ -162,11 +163,9 @@ class AsyncManager
      */
     private function closeSockets(array $sockets): void
     {
-        if (is_array($sockets)) {
-            foreach ($sockets as $socket) {
-                if (is_resource($socket)) {
-                    fclose($socket);
-                }
+        foreach ($sockets as $socket) {
+            if (is_resource($socket)) {
+                fclose($socket);
             }
         }
     }

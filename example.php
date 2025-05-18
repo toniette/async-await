@@ -2,7 +2,6 @@
 
 require_once __DIR__ . '/vendor/autoload.php';
 
-use Toniette\AsyncAwait\Async\AsyncFacade;
 use Toniette\AsyncAwait\Async\AsyncManager;
 use Toniette\AsyncAwait\Examples\AsyncExample;
 

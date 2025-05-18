@@ -4,6 +4,9 @@ namespace Toniette\AsyncAwait\Examples;
 
 use Random\RandomException;
 use Toniette\AsyncAwait\Async\AsyncManager;
+use Toniette\AsyncAwait\Async\Exception\ProcessException;
+use Toniette\AsyncAwait\Async\Exception\PromiseException;
+use Toniette\AsyncAwait\Async\Exception\SocketException;
 
 /**
  * Example demonstrating the usage of the AsyncAwait library
@@ -27,6 +30,9 @@ class AsyncExample
      * Run the example
      *
      * @return void
+     * @throws ProcessException
+     * @throws PromiseException
+     * @throws SocketException
      */
     public function run(): void
     {
@@ -38,6 +44,9 @@ class AsyncExample
      * Demonstrate basic async/await functionality
      *
      * @return void
+     * @throws ProcessException
+     * @throws PromiseException
+     * @throws SocketException
      */
     private function demonstrateBasicAsyncAwait(): void
     {
@@ -62,6 +71,8 @@ class AsyncExample
      * Demonstrate pooling functionality
      *
      * @return void
+     * @throws ProcessException
+     * @throws SocketException
      */
     private function demonstratePooling(): void
     {
@@ -99,12 +110,16 @@ class AsyncExample
     public function exampleAsyncOperation(int $id): string
     {
         sleep(random_int(1, 3)); // Reduced sleep time for faster testing
-        return "{$id} => " . date('Y-m-d H:i:s');
+        return "$id => " . date('Y-m-d H:i:s');
     }
 }
 
 // Run the example if this file is executed directly
 if (basename($_SERVER['SCRIPT_FILENAME']) === basename(__FILE__)) {
     $example = new AsyncExample();
-    $example->run();
+    try {
+        $example->run();
+    } catch (ProcessException|PromiseException|SocketException $e) {
+        echo $e->getMessage();
+    }
 }
