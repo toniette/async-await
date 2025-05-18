@@ -1,6 +1,9 @@
 <?php
 
 use Toniette\AsyncAwait\Async\AsyncFacade;
+use Toniette\AsyncAwait\Async\Exception\ProcessException;
+use Toniette\AsyncAwait\Async\Exception\PromiseException;
+use Toniette\AsyncAwait\Async\Exception\SocketException;
 use Toniette\AsyncAwait\Async\PromiseInterface;
 
 /**
@@ -9,6 +12,8 @@ use Toniette\AsyncAwait\Async\PromiseInterface;
  * @param callable $fn The function to execute asynchronously
  * @param mixed ...$params Parameters to pass to the function
  * @return PromiseInterface A Promise object representing the asynchronous operation
+ * @throws ProcessException
+ * @throws SocketException
  */
 function async(callable $fn, mixed ...$params): PromiseInterface
 {
@@ -20,6 +25,7 @@ function async(callable $fn, mixed ...$params): PromiseInterface
  *
  * @param PromiseInterface $promise The promise to wait for
  * @return mixed The result of the asynchronous operation
+ * @throws PromiseException
  */
 function await(PromiseInterface $promise): mixed
 {
