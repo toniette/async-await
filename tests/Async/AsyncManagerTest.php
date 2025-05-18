@@ -30,7 +30,7 @@ class AsyncManagerTest extends TestCase
             $this->markTestSkipped('PCNTL extension is not available');
         }
 
-        $fn = function() {
+        $fn = function () {
             return 'test';
         };
 
@@ -53,7 +53,7 @@ class AsyncManagerTest extends TestCase
             $this->markTestSkipped('PCNTL extension is not available');
         }
 
-        $fn = function(string $message) {
+        $fn = function (string $message) {
             return "Hello, $message!";
         };
 
@@ -73,7 +73,7 @@ class AsyncManagerTest extends TestCase
             $this->markTestSkipped('PCNTL extension is not available');
         }
 
-        $fn = function(int $value) {
+        $fn = function (int $value) {
             return $value * 2;
         };
 
@@ -97,7 +97,7 @@ class AsyncManagerTest extends TestCase
             $this->markTestSkipped('PCNTL extension is not available');
         }
 
-        $fn = function(int $value) {
+        $fn = function (int $value) {
             return $value * 2;
         };
 
@@ -107,7 +107,7 @@ class AsyncManagerTest extends TestCase
         $callbackCalled = false;
         $callbackResults = [];
 
-        $callback = function(int ...$results) use (&$callbackCalled, &$callbackResults) {
+        $callback = function (int ...$results) use (&$callbackCalled, &$callbackResults) {
             $callbackCalled = true;
             $callbackResults = $results;
         };
@@ -139,7 +139,7 @@ class AsyncManagerTest extends TestCase
             $this->markTestSkipped('PCNTL extension is not available');
         }
 
-        $fn = function(string $a, string $b, string $c) {
+        $fn = function (string $a, string $b, string $c) {
             return "$a $b $c";
         };
 
@@ -159,7 +159,7 @@ class AsyncManagerTest extends TestCase
             $this->markTestSkipped('PCNTL extension is not available');
         }
 
-        $fn = function(array $data) {
+        $fn = function (array $data) {
             return array_sum($data);
         };
 

@@ -1,6 +1,6 @@
 {
   "type": "library",
-  "name": "Toniette/async-await",
+  "name": "toniette/async-await",
   "description": "A PHP library for running asynchronous operations using a Promise-based API with async/await pattern",
   "keywords": ["async", "await", "promise", "asynchronous", "parallel", "concurrent", "pcntl", "fork"],
   "minimum-stability": "stable",

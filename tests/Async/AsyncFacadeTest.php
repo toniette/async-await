@@ -18,7 +18,7 @@ class AsyncFacadeTest extends TestCase
             $this->markTestSkipped('PCNTL extension is not available');
         }
 
-        $fn = function() {
+        $fn = function () {
             return 'test';
         };
 
@@ -40,7 +40,7 @@ class AsyncFacadeTest extends TestCase
             $this->markTestSkipped('PCNTL extension is not available');
         }
 
-        $fn = function(string $message) {
+        $fn = function (string $message) {
             return "Hello, $message!";
         };
 
@@ -60,7 +60,7 @@ class AsyncFacadeTest extends TestCase
             $this->markTestSkipped('PCNTL extension is not available');
         }
 
-        $fn = function(int $value) {
+        $fn = function (int $value) {
             return $value * 2;
         };
 
@@ -84,7 +84,7 @@ class AsyncFacadeTest extends TestCase
             $this->markTestSkipped('PCNTL extension is not available');
         }
 
-        $fn = function(int $value) {
+        $fn = function (int $value) {
             return $value * 2;
         };
 
@@ -94,7 +94,7 @@ class AsyncFacadeTest extends TestCase
         $callbackCalled = false;
         $callbackResults = [];
 
-        $callback = function(int ...$results) use (&$callbackCalled, &$callbackResults) {
+        $callback = function (int ...$results) use (&$callbackCalled, &$callbackResults) {
             $callbackCalled = true;
             $callbackResults = $results;
         };
@@ -120,7 +120,7 @@ class AsyncFacadeTest extends TestCase
             $this->markTestSkipped('PCNTL extension is not available');
         }
 
-        $fn = function() {
+        $fn = function () {
             return 'test';
         };
 

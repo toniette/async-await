@@ -86,7 +86,7 @@ class AsyncExample
 
         // Process all promises in parallel and handle results
         $this->asyncManager->pool(
-            function(string ...$results): void {
+            function (string ...$results): void {
                 echo "All promises completed. Results:\n";
                 foreach ($results as $index => $result) {
                     echo "Result " . ($index + 1) . ": $result\n";
@@ -103,7 +103,7 @@ class AsyncExample
     /**
      * Example async function that sleeps for a random time and returns a timestamp
      *
-     * @param int $id The identifier for this async operation
+     * @param  int $id The identifier for this async operation
      * @return string The result with a timestamp
      * @throws RandomException
      */

@@ -17,7 +17,7 @@ class FunctionsTest extends TestCase
             $this->markTestSkipped('PCNTL extension is not available');
         }
 
-        $fn = function() {
+        $fn = function () {
             return 'test';
         };
 
@@ -39,7 +39,7 @@ class FunctionsTest extends TestCase
             $this->markTestSkipped('PCNTL extension is not available');
         }
 
-        $fn = function(string $message) {
+        $fn = function (string $message) {
             return "Hello, $message!";
         };
 
@@ -59,7 +59,7 @@ class FunctionsTest extends TestCase
             $this->markTestSkipped('PCNTL extension is not available');
         }
 
-        $fn = function(int $value) {
+        $fn = function (int $value) {
             return $value * 2;
         };
 
@@ -83,7 +83,7 @@ class FunctionsTest extends TestCase
             $this->markTestSkipped('PCNTL extension is not available');
         }
 
-        $fn = function(int $value) {
+        $fn = function (int $value) {
             return $value * 2;
         };
 
@@ -93,7 +93,7 @@ class FunctionsTest extends TestCase
         $callbackCalled = false;
         $callbackResults = [];
 
-        $callback = function(int ...$results) use (&$callbackCalled, &$callbackResults) {
+        $callback = function (int ...$results) use (&$callbackCalled, &$callbackResults) {
             $callbackCalled = true;
             $callbackResults = $results;
         };
@@ -115,7 +115,7 @@ class FunctionsTest extends TestCase
             $this->markTestSkipped('PCNTL extension is not available');
         }
 
-        $fn = function(string $a, string $b, string $c) {
+        $fn = function (string $a, string $b, string $c) {
             return "$a $b $c";
         };
 
@@ -135,7 +135,7 @@ class FunctionsTest extends TestCase
             $this->markTestSkipped('PCNTL extension is not available');
         }
 
-        $fn = function(array $data) {
+        $fn = function (array $data) {
             return array_sum($data);
         };
 

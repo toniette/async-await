@@ -33,8 +33,8 @@ class AsyncFacade
     /**
      * Execute a function asynchronously in a separate process
      *
-     * @param callable $fn The function to execute asynchronously
-     * @param mixed ...$params Parameters to pass to the function
+     * @param  callable $fn        The function to execute asynchronously
+     * @param  mixed    ...$params Parameters to pass to the function
      * @return PromiseInterface A Promise object representing the asynchronous operation
      * @throws ProcessException
      * @throws SocketException
@@ -47,7 +47,7 @@ class AsyncFacade
     /**
      * Wait for a promise to complete and return its result
      *
-     * @param PromiseInterface $promise The promise to wait for
+     * @param  PromiseInterface $promise The promise to wait for
      * @return mixed The result of the asynchronous operation
      * @throws PromiseException
      */
@@ -59,8 +59,8 @@ class AsyncFacade
     /**
      * Wait for multiple promises to complete and optionally process their results
      *
-     * @param callable|null $fn Optional callback function to process results
-     * @param PromiseInterface ...$promises List of Promise objects to wait for
+     * @param  callable|null    $fn          Optional callback function to process results
+     * @param  PromiseInterface ...$promises List of Promise objects to wait for
      * @return array Array of results from all promises
      */
     public static function pool(?callable $fn, PromiseInterface ...$promises): array

@@ -1,6 +1,6 @@
 # AsyncAwait PHP Library
 
-A PHP library for running asynchronous operations using a Promise-based API with async/await pattern.
+A PHP library for running asynchronous operations using a Promise-based API with an async/await pattern.
 
 ## Features
 
@@ -8,7 +8,7 @@ A PHP library for running asynchronous operations using a Promise-based API with
 - Promise-based API for managing asynchronous operations
 - Support for awaiting individual promises or pooling multiple promises
 - Object-oriented design following SOLID principles
-- Backward compatibility with functional API
+- Backward compatibility with a functional API
 
 ## Requirements
 
@@ -19,7 +19,7 @@ A PHP library for running asynchronous operations using a Promise-based API with
 ## Installation
 
 ```bash
-composer require Toniette/async-await
+composer require toniette/async-await
 ```
 
 ## Usage
@@ -191,9 +191,9 @@ Contributions are welcome! Please feel free to submit a Pull Request.
 
 ### 1.0.0 (Initial Release)
 - Implemented Promise-based API for asynchronous operations
-- Added support for async/await pattern
+- Added support for an async/await pattern
 - Added support for pooling multiple promises
-- Added backward compatibility with functional API
+- Added backward compatibility with a functional API
 
 ## License
 

@@ -14,8 +14,8 @@ class AsyncManager
     /**
      * Execute a function asynchronously in a separate process
      *
-     * @param callable $fn The function to execute asynchronously
-     * @param mixed ...$params Parameters to pass to the function
+     * @param  callable $fn        The function to execute asynchronously
+     * @param  mixed    ...$params Parameters to pass to the function
      * @return PromiseInterface A Promise object representing the asynchronous operation
      * @throws SocketException If there's an error, setting up sockets
      * @throws ProcessException If there's an error, forking the process
@@ -36,7 +36,7 @@ class AsyncManager
     /**
      * Wait for a promise to complete and return its result
      *
-     * @param PromiseInterface $promise The promise to wait for
+     * @param  PromiseInterface $promise The promise to wait for
      * @return mixed The result of the asynchronous operation
      * @throws PromiseException
      */
@@ -48,8 +48,8 @@ class AsyncManager
     /**
      * Wait for multiple promises to complete and optionally process their results
      *
-     * @param callable|null $fn Optional callback function to process results
-     * @param PromiseInterface ...$promises List of Promise objects to wait for
+     * @param  callable|null    $fn          Optional callback function to process results
+     * @param  PromiseInterface ...$promises List of Promise objects to wait for
      * @return array Array of results from all promises
      */
     public function pool(?callable $fn, PromiseInterface ...$promises): array
@@ -87,9 +87,11 @@ class AsyncManager
             }
         }
 
-        usort($receivedResults, function (array $a, array $b): int {
-            return $a['index'] <=> $b['index'];
-        });
+        usort(
+            $receivedResults, function (array $a, array $b): int {
+                return $a['index'] <=> $b['index'];
+            }
+        );
 
         $results = array_column($receivedResults, 'result');
 
@@ -120,9 +122,9 @@ class AsyncManager
     /**
      * Fork the process to execute the function asynchronously
      *
-     * @param callable $fn The function to execute
-     * @param array $params The parameters to pass to the function
-     * @param array $sockets The socket pair for communication
+     * @param  callable $fn      The function to execute
+     * @param  array    $params  The parameters to pass to the function
+     * @param  array    $sockets The socket pair for communication
      * @return int The process ID of the child process
      * @throws ProcessException If there's an error, forking the process
      */
@@ -158,7 +160,7 @@ class AsyncManager
     /**
      * Close all sockets in an array
      *
-     * @param array $sockets Array of socket resources
+     * @param  array $sockets Array of socket resources
      * @return void
      */
     private function closeSockets(array $sockets): void

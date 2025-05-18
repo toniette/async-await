@@ -28,7 +28,7 @@ class Promise implements PromiseInterface
     /**
      * Constructor
      *
-     * @param int $pid The process ID
+     * @param int           $pid    The process ID
      * @param resource|null $socket The socket resource
      */
     public function __construct(int $pid, mixed $socket = null)
